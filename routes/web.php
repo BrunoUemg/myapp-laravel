@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 use \Illuminate\Http\Request;
 
-Route::get('/request', function (Request $request) {
+/*Route::get('/request', function (Request $request) {
     $r = $request->ip();
 
     dd($r);
@@ -44,4 +44,10 @@ Route::get('/users/{id}', function ($id) {
     return $id;
 }); */
 
-Route::get('user/{user}', [UserController::class, 'show']);
+Route::get("/", function(){
+    return view('welcome');
+});
+
+Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('users', [UserController::class, 'index'])->name('user.index');
+
